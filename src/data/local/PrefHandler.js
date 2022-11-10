@@ -15,7 +15,7 @@ export default class PrefHandler {
     }
 
     async getSession(onResult) {
-        var result = { data: null, }
+        var result = { userInfo: null, }
         try {
             const info = await AsyncStorage.getItem(SESSION_USERDATA)
 

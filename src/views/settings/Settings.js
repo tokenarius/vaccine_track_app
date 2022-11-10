@@ -7,7 +7,7 @@ export default function Settings({ navigation }) {
 
     return (
         <View style={{ flex: 1, backgroundColor: "#fff" }}>
-            <Text style={{ textAlign: 'center', color: '#000', fontFamily: "OpenSans-Bold", fontSize: 18, marginTop: 38 }}>תפריט</Text>
+            <Text style={{ textAlign: 'center', color: '#000', fontFamily: "OpenSans-Bold", fontSize: 18, marginTop: 20 }}>תפריט</Text>
 
             <View style={{
                 marginTop: 50,
@@ -55,7 +55,7 @@ export default function Settings({ navigation }) {
                     }}
                 />
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => { navigation.navigate('Profile') }}>
                     <Text style={{ marginRight: 20, color: '#000', fontFamily: "OpenSans-Medium", fontSize: 16, marginTop: 18 }}>פרופיל משתמש</Text>
                 </TouchableOpacity>
             </View>

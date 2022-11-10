@@ -9,7 +9,9 @@ import Signup from '../views/signup/Signup'
 import Onboarding from '../views/onboarding/Onboarding';
 import PrivacyPolicy from '../views/privacypolicy/PrivacyPolicy';
 import Profile from '../views/profile/Profile';
-import Settings from '../views/settings/Settings';
+
+/////// ------------- Bottom NAvigator ----------//
+import BottomNavigator from '../navigations/BottomNavigator'
 
 export default function StackNavigator() {
   const Stack = createNativeStackNavigator();
@@ -26,7 +28,7 @@ export default function StackNavigator() {
         <Stack.Screen name="Onboarding" component={Onboarding} />
         <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
         <Stack.Screen name="Profile" component={Profile} />
-        <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="BottomNavigator" component={BottomNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
   )

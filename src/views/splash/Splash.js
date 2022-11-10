@@ -1,18 +1,29 @@
 import { View, Text, Image } from 'react-native'
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 import PrefHandler from '../../data/local/PrefHandler';
 
-export default function Splash({navigation}) {
-const prefHandler = new PrefHandler()
+export default function Splash({ navigation }) {
+    const prefHandler = new PrefHandler()
 
     useEffect(() => {
         prefHandler.getSession((res) => {
-    
+
             setTimeout(() => {
-              navigation.navigate(res.userInfo ? 'Profile' : 'Signup')
+                {
+                    res.userInfo ?
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'BottomNavigator' }],
+                        })
+                        :
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'Signup' }],
+                        })
+                }
             }, 3000);
         })
-      });
+    });
     return (
         <View style={{ flex: 1, justifyContent: 'center' }}>
             <View style={{ alignSelf: 'center' }}>
