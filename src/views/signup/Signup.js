@@ -194,13 +194,15 @@ export default function Signup({ navigation }) {
                 </View>
 
                 <View style={{ marginTop: 13 }}>
-                    <Input title={'גיל'} onChange={(txt) => { setAge(txt) + setAgeVal(false) }} bgStyle={ageVal ? {
-                        borderWidth: 1, borderColor: 'red', width: 85,
-                        alignSelf: 'flex-end'
-                    } : {
-                        width: 85,
-                        alignSelf: 'flex-end'
-                    }} />
+                    <Input title={'גיל'} onChange={(txt) => { setAge(txt) + setAgeVal(false) }}
+                        keyboardType={'number-pad'}
+                        bgStyle={ageVal ? {
+                            borderWidth: 1, borderColor: 'red', width: 85,
+                            alignSelf: 'flex-end'
+                        } : {
+                            width: 85,
+                            alignSelf: 'flex-end'
+                        }} />
                     {ageVal ? <Text style={{ color: '#FF4040', fontFamily: "OpenSans-Medium", fontSize: 12, marginRight: 20 }}>נא להזין גיל</Text> : null}
                 </View>
             </View>
