@@ -11,10 +11,9 @@ const Input = ({
   secureTextEntry,
   val,
   edit,
-  theme,
-  language,
   txtStyle,
-  multiline
+  multiline, 
+  onEndEditing
 }) => {
   const [value, setValue] = useState('');
 
@@ -22,7 +21,7 @@ const Input = ({
     <View style={{
       marginHorizontal: 20,
     }}>
-      <Text style={{ color: '#000' ,fontSize:16}}>{title}</Text>
+      <Text style={{ color: '#000', fontSize: 16 }}>{title}</Text>
       <View
         style={{
           backgroundColor: 'rgba(229, 228, 226, 0.6)',
@@ -30,7 +29,7 @@ const Input = ({
           flexDirection: 'row',
           alignItems: 'center',
           ...bgStyle,
-          marginTop:5
+          marginTop: 5
         }}>
         <TextInput
           style={{ flex: 1, fontSize: 15, color: '#000', marginLeft: 15, ...txtStyle, }}
@@ -41,6 +40,7 @@ const Input = ({
           placeholderTextColor={'#BDBCBC'}
           editable={edit}
           keyboardType={keyboardType}
+          onEndEditing={onEndEditing}
           onChangeText={txt => handleonTextChange(txt)}
         />
 
