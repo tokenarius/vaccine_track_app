@@ -32,76 +32,108 @@ export default function Signup({ navigation }) {
 
     const DATA = [
         {
-            id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+            id: 1,
             title: 'שפעת',
             color: '#EBA9C1',
             decs1: 'המצאות בקרבת חולי שפעת.',
             decs2: 'מנה אחת כל שנה.',
             decs3: 'פעיל למשך שנה ויש לחדש כל שנה.',
             decs4: 'הזנים המבוססים על החיסון משתנים כל שנה.',
+            note: '',
+            dose1: false,
+            dose2: false,
+            dose3: false
         },
         {
-            id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f634',
+            id: 2,
             title: '(חצבת, אדמת, חזרת) MMR',
             color: '#EBA9C1',
             decs1: 'מאוד מדבק, דרך חלקיקי אויר במקום שהיית החולה ואף מעט לאחר יציאתו מאיזור ההדבקה.',
             decs2: '2 מנות במהלך החיים.',
             decs3: 'ילידי 57-69 אינם מחוסנים בשגרה, ילידי 70-77 מחוסנים בחיסון אחד בלבד. ילידי 78 והלאה מחוסנים בחיסון מלא על פי תוכנית החיסונים.',
             decs4: 'מומלץ בעיקר לנוסעים לחו״ל ובכל מקרה להיוועץ ברופא המשפחה.',
+            note: '',
+            dose1: false,
+            dose2: false,
+            dose3: false
         },
         {
-            id: '58694a0f-3da1-471f-bd96-145571e29d725',
+            id: 3,
             title: 'צהבת B',
             color: '#EBA9C1',
             decs1: 'מגע מיני לא מוגן, דם.',
             decs2: '3 מנות. 0, 1, 6 חודשים.',
             decs3: 'פעיל לפחות 20 שנה. ילידי שנת 1992 והלאה חוסנו כחלק מחיסוני הילדות. ניתן לבדוק נוגדנים בבדיקת דם בקופת החולים.',
             decs4: 'רלוונטי מאוד לאנשים הנוטלים PREP. יש לוודא חיסוניות לפני התחלת הטיפול.',
+            note: '',
+            dose1: false,
+            dose2: false,
+            dose3: false
         },
         {
-            id: '58694a0f-3da1-471f-bd96-145571e29d7223',
+            id: 4,
             title: 'צהבת A',
             color: '#EBA9C1',
             decs1: 'רימינג , אוכל ומים הנגועים בוירוס.',
             decs2: '2 מנות בהפרש של חצי שנה לפחות.',
             decs3: 'פעיל לפחות 30 שנה. ילידי שנת 1998 והלאה חוסנו כחלק מחיסוני הילדות. ניתן לבדוק בדיקת נוגדים בקופות החולים.',
             decs4: 'שכיחות התפרצויות סביב אירועי גאווה.',
+            note: '',
+            dose1: false,
+            dose2: false,
+            dose3: false
         },
         {
-            id: '58694a0f-3da1-471f-bd96-145571e29d722',
+            id: 5,
             title: 'דלקת ריאות פנאומוקוקלית וסיבוכיה',
             color: '#376BA5',
             decs1: 'המצאות ממושכת וקרובה בסביבת אנשים הנושאים את החיידק בגרונם.',
             decs2: 'למדוכאי חיסון או מעל גיל 65 - 2 סוגי חיסון,.PPSV23 וחודשיים לאחר מכן PCV13',
             decs3: 'פעיל ל5 שנים לפחות - PPSV23 PCV13 - חיסון אחד לכל החיים',
             decs4: 'מתחת לגיל 65 מיועד לקבוצות סיכון מיוחדות בלבד - יש להיוועץ ברופא המטפל.',
+            note: '',
+            dose1: false,
+            dose2: false,
+            dose3: false
         },
         {
-            id: '58694a0f-3da1-471f-bd96-145571e29d72456',
+            id: 6,
             title: 'דלקת קרום המח מנינגוקוקלית B',
             color: '#376BA5',
             decs1: 'המצאות ממושכת וקרובה בסביבת אנשים הנושאים את החיידק בגרונם.',
             decs2: '2 מנות בהפרש של חודש.',
             decs3: 'פעיל ל-5 שנים.',
             decs4: 'הזן הנפוץ ביותר בישראל וברוב מדינות המערב. מחלה עם אחוזי תמותה גבוהים. עלולות להיות  התפרצויות בעיקר באנשים השוהים במקומות סגורים (מסיבות וכ׳ו).',
+            note: '',
+            dose1: false,
+            dose2: false,
+            dose3: false
         },
         {
-            id: '58694a0f-3da1-471f-bd96-145571e29d7211',
+            id: 7,
             title: 'דלקת קרום המח מנינגוקוקלית ACWY',
             color: '#376BA5',
             decs1: 'המצאות ממושכת וקרובה בסביבת אנשים הנושאים את החיידק בגרונם.',
             decs2: 'קבוצות סיכון מיוחדות - 2 מנות בהפרש של חודש. ללא גורמי סיכון - מנה אחת בלבד.',
             decs3: 'פעיל ל-5 שנים. חלק משגרת החיסונים לחיילים מתגייסים.',
             decs4: 'מחלה נדירה אך מאוד מסוכנת.',
+            note: '',
+            dose1: false,
+            dose2: false,
+            dose3: false
         },
         {
-            id: '58694a0f-3da1-471f-bd96-145571e29d721123e4',
+            id: 8,
             title: 'דלקת קרום המח מנינגוקוקלית ACWY',
             color: '#009E69',
             decs1: 'מגע עורי, בעיקר במגע מיני. קונדום אינו מספק הגנה מלאה מפני הדבקה.',
             decs2: '3 מנות על פני חצי שנה.',
             decs3: 'ניתן כסדרה אחת פעם אחת בחיים. כיום ניתן לכל הבנים והבנות בכיתה ח׳.',
             decs4: 'החיסון מיועד למניעת יבלות באברי המין וכן סרטן פי הטבעת, סרטן הפין וסרטן הפה והלוע. ככל  שמבוצע מוקדם יותר כך יעילותו גוברת (הסיכוי לחשיפה קודמת נמוך יותר).',
+            note: '',
+            dose1: false,
+            dose2: false,
+            dose3: false
         },
     ];
 
@@ -182,11 +214,11 @@ export default function Signup({ navigation }) {
 
             <View style={{ flex: 1, justifyContent: 'flex-end', marginBottom: 30 }}>
                 <View style={{ alignSelf: 'center', marginRight: 20, marginTop: 34, marginBottom: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
-                    <TouchableOpacity onPress={() => { setPrivacyScreen(true)  }}>
+                    <TouchableOpacity onPress={() => { setPrivacyScreen(true) }}>
                         <Text style={{ color: '#000', fontFamily: "OpenSans-Bold", fontSize: 16, marginRight: 5 }}>לתנאי השימוש</Text>
                     </TouchableOpacity>
                     <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", fontSize: 16, marginRight: 10 }}>אני מסכים</Text>
-                    <TouchableOpacity onPress={() => setPrivacyCheck(!privacyCheck)+ setPrivacypolicyVal(false)} style={{}}>
+                    <TouchableOpacity onPress={() => setPrivacyCheck(!privacyCheck) + setPrivacypolicyVal(false)} style={{}}>
                         <MaterialCommunityIcons name={privacyCheck ? 'checkbox-marked-outline' : 'checkbox-blank-outline'} style={{}} size={32} color={privacypolicyVal ? '#FF4040' : '#000'} />
                     </TouchableOpacity>
                 </View>
