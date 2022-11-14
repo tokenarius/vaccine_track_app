@@ -15,7 +15,7 @@ export default function BottomNavigator() {
                 tabBarInactiveTintColor: '#000',
                 tabBarLabelStyle: {
                     fontSize: 12,
-                    fontFamily: 'OpenSans-Bold',
+                    fontFamily: 'Assistant-Bold',
                 },
                 tabBarItemStyle: {
                     marginBottom: 10

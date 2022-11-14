@@ -148,10 +148,12 @@ export default function Signup({ navigation }) {
         } if (age == '') {
             setAgeVal(true)
             return;
-        } if (hivCheck == false) {
-            setHivVal(true)
-            return;
-        } if (privacyCheck == false) {
+        }
+        //  if (hivCheck == false) {
+        //     setHivVal(true)
+        //     return;
+        // }
+         if (privacyCheck == false) {
             setPrivacypolicyVal(true)
             return;
         }
@@ -215,7 +217,7 @@ export default function Signup({ navigation }) {
             </View>
 
             <View style={{ flex: 1, justifyContent: 'flex-end', marginBottom: 30 }}>
-                <View style={{ alignSelf: 'center', marginRight: 20, marginTop: 34, marginBottom: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
+                <View style={{ alignSelf: 'center', marginTop: 34, marginBottom: 20, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' }}>
                     <TouchableOpacity onPress={() => { setPrivacyScreen(true) }}>
                         <Text style={{ color: '#000', fontFamily: "OpenSans-Bold", fontSize: 16, marginRight: 5 }}>לתנאי השימוש</Text>
                     </TouchableOpacity>

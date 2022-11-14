@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import Input from '../../reuseables/Input'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import AntDesign from 'react-native-vector-icons/AntDesign'
-import Button from '../../reuseables/Button'
 import PrefHandler from '../../data/local/PrefHandler';
 import Helper from '../../utils/Helper'
 import { useFocusEffect } from '@react-navigation/native'
@@ -15,7 +14,6 @@ export default function Profile({ navigation }) {
     const [age, setAge] = useState('')
 
     const prefHandler = new PrefHandler()
-    const helper = new Helper()
 
     useEffect(() => {
         prefHandler.getSession((userInfo) => {
@@ -37,15 +35,6 @@ export default function Profile({ navigation }) {
         })
     );
 
-    // ----- Logout Function --------//
-    const LogoutFunc = () => {
-        prefHandler.deleteSession((onResult) => {
-            navigation.reset({
-                index: 0,
-                routes: [{ name: 'Signup' }],
-            })
-        })
-    }
 
     return (
         <View style={{ flex: 1, backgroundColor: "#fff" }}>
@@ -78,10 +67,6 @@ export default function Profile({ navigation }) {
                 <TouchableOpacity onPress={() => setHivCheck(!hivCheck)} style={{}}>
                     <MaterialCommunityIcons name={hivCheck ? 'checkbox-marked-outline' : 'checkbox-blank-outline'} style={{}} size={32} color={'#000'} />
                 </TouchableOpacity>
-            </View>
-
-            <View style={{ flex: 1, justifyContent: 'flex-end', marginBottom: 30 }}>
-                <Button title={'Logout'} onPress={() => { LogoutFunc() }} bgStyle={{ marginTop: 40 }} />
             </View>
         </View>
     )

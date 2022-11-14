@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, FlatList ,Image} from 'react-native'
 import React, { useState, useEffect } from 'react'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import PrefHandler from '../../data/local/PrefHandler'
@@ -32,8 +32,8 @@ export default function Home({ navigation }) {
             setName(onSucess.userInfo.name)
             setAge(onSucess.userInfo.age)
             setHivCheck(onSucess.userInfo.hivCheck)
-        setLoading(false)
-    })
+            setLoading(false)
+        })
     }, [])
 
     useFocusEffect(
@@ -50,14 +50,6 @@ export default function Home({ navigation }) {
         }, [])
     );
 
-    const OpenDetails = (index) => {
-        if (index == selectedIndex) {
-            setVaccineDetails(false)
-        } else {
-            setSelectedIndex(index)
-            setVaccineDetails(true)
-        }
-    }
 
     const StoreNote = (item) => {
         setData(prevState => {
@@ -130,30 +122,6 @@ export default function Home({ navigation }) {
                     <View style={{ backgroundColor: item.color, padding: 10, borderRadius: 45 }} />
                 </View>
 
-                {/* <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', marginLeft: 20, marginRight: 47 }}>
-                  
-                    <TouchableOpacity style={{ backgroundColor: '#F2F3F7', width: 94, padding: 15, borderRadius: 5 }} onPress={() => setPotion3(!potion3) + setSelectedIndex(index)}>
-                        {potion3 && index == selectedIndex ?
-                            <AntDesign name={'checkcircleo'} size={18} color={'#000'} style={{ alignSelf: 'center' }} />
-                            :
-                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 5, fontSize: 14, textAlign: 'center' }}>מנה 3</Text>}
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={{ backgroundColor: '#F2F3F7', width: 94, padding: 15, borderRadius: 5 }} onPress={() => setPotion2(!potion2) + setSelectedIndex(index)}>
-                        {potion2 && index == selectedIndex ?
-                            <AntDesign name={'checkcircleo'} size={18} color={'#000'} style={{ alignSelf: 'center' }} />
-                            :
-                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 5, fontSize: 14, textAlign: 'center' }}>מנה 2</Text>}
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={{ backgroundColor: '#F2F3F7', width: 94, padding: 15, borderRadius: 5 }} onPress={() => setPotion1(!potion1)}>
-                        {potion1 && index == selectedIndex ?
-                            <AntDesign name={'checkcircleo'} size={18} color={'#000'} style={{ alignSelf: 'center' }} />
-                            :
-                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 5, fontSize: 14, textAlign: 'center' }}>מנה 1</Text>}
-                    </TouchableOpacity>
-                </View> */}
-
                 <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', marginLeft: 20, marginRight: 47 }}>
 
                     <TouchableOpacity style={{ backgroundColor: '#F2F3F7', width: 94, padding: 15, borderRadius: 5 }} onPress={() => {
@@ -165,14 +133,14 @@ export default function Home({ navigation }) {
                             <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 5, fontSize: 14, textAlign: 'center' }}>מנה 3</Text>}
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={{ backgroundColor: '#F2F3F7', width: 94, padding: 15, borderRadius: 5 }} onPress={() => {   StoreDose(item, "dose2", !item?.dose2)}}>
+                    <TouchableOpacity style={{ backgroundColor: '#F2F3F7', width: 94, padding: 15, borderRadius: 5 }} onPress={() => { StoreDose(item, "dose2", !item?.dose2) }}>
                         {item?.dose2 ?
                             <AntDesign name={'checkcircleo'} size={18} color={'#000'} style={{ alignSelf: 'center' }} />
                             :
                             <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 5, fontSize: 14, textAlign: 'center' }}>מנה 2</Text>}
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={{ backgroundColor: '#F2F3F7', width: 94, padding: 15, borderRadius: 5 }} onPress={() => {  StoreDose(item, "dose3", !item?.dose3) }}>
+                    <TouchableOpacity style={{ backgroundColor: '#F2F3F7', width: 94, padding: 15, borderRadius: 5 }} onPress={() => { StoreDose(item, "dose3", !item?.dose3) }}>
                         {item?.dose3 ?
                             <AntDesign name={'checkcircleo'} size={18} color={'#000'} style={{ alignSelf: 'center' }} />
                             :
@@ -182,23 +150,12 @@ export default function Home({ navigation }) {
 
                 {(item.note != "" && selectedIndex != index) &&
                     <Input bgStyle={{ marginRight: 30 }} multiline={true} edit={noteCheck} val={item.note} onChange={(txt) => { }} />}
-
-
                 {
                     note && index == selectedIndex ?
                         <View>
-                            {/* <Input bgStyle={{ marginRight: 30 }} multiline={true} edit={noteCheck} val={item.note + noteInput} onChange={(txt) => { setNoteInput(txt) }} /> */}
                             <Input bgStyle={{ marginRight: 30 }} multiline={true} edit={noteCheck} val={(inputValue != "" && inputValueIndex == index) ? inputValue : item.note} onChange={(txt) => {
-                                // const [inputValue, setinputValue] = useState("")
-                                // const [inputValueIndex, setinputValueIndex] = useState(-1)
-
                                 setinputValue(txt)
                                 setinputValueIndex(index)
-
-
-
-                                // setNoteInput(txt)
-
                             }} />
                             {noteCheck ?
                                 <TouchableOpacity style={{ marginTop: 5, padding: 5 }} onPress={() => {
@@ -216,11 +173,9 @@ export default function Home({ navigation }) {
                         :
                         null
                 }
-
                 <View style={{ marginLeft: 20, marginRight: 47, marginTop: 15, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }} >
                     <View style={{}}>
                         <TouchableOpacity activeOpacity={.3} style={{ flexDirection: 'row', alignItems: 'center', }} onPress={() => {
-                            // OpenDetails(index)
                             if (selectedOpenBox == index) {
                                 setselectedOpenBox(-1)
                             } else {
@@ -235,19 +190,19 @@ export default function Home({ navigation }) {
                     <View style={{}}>
                         <TouchableOpacity activeOpacity={.3} style={{ flexDirection: 'row', alignItems: 'center', }} onPress={() => setNote(true) + setSelectedIndex(index) + setNoteCheck(true)}>
                             <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 6, fontSize: 14, }}>הוספת הערה</Text>
-                            {/* <AntDesign name={note && index == selectedIndex ? 'edit' : 'plus'} size={14} color={'#000'} style={{ marginRight: 6 }} /> */}
-
                             {(item.note == "" && selectedIndex != index) &&
-                                <AntDesign name={'plus'} size={14} color={'#000'} style={{ marginRight: 6 }} />}
+                                // <AntDesign name={'plus'} size={14} color={'#000'} style={{ marginRight: 6 }} />
+                                <Image source={require('../../assets/logos/Plus.png')} style={{height:13,width:13}}/>
+                                }
 
                             {((item.note != "" && selectedIndex != index) || (note && index == selectedIndex)) &&
-                                <AntDesign name={'edit'} size={14} color={'#000'} style={{ marginRight: 6 }} />}
-
+                                // <AntDesign name={'edit'} size={14} color={'#000'} style={{ marginRight: 6 }} />
+                                <Image source={require('../../assets/logos/Edit.png')} style={{height:15,width:15}}/>
+                                }
                         </TouchableOpacity>
                     </View>
                 </View>
 
-                {/* {vaccineDetails && index == selectedIndex ? */}
                 {
                     selectedOpenBox == index &&
                     <View style={{ marginLeft: 20, marginRight: 47, paddingBottom: 20, backgroundColor: '#F2F3F7', borderRadius: 5, marginTop: 15 }}>
@@ -287,7 +242,7 @@ export default function Home({ navigation }) {
 
     return (
         <View style={{ flex: 1, backgroundColor: '#fff' }}>
-            {loading && <LoadingPage/>}
+            {loading && <LoadingPage />}
             <View style={{ elevation: 5, backgroundColor: '#fff' }}>
                 <Text style={{ textAlign: 'center', color: '#000', fontFamily: "OpenSans-Bold", fontSize: 18, marginTop: 20, marginBottom: 13 }}>פנקס החיסונים</Text>
             </View>

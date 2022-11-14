@@ -1,9 +1,37 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet,Alert } from 'react-native'
 import React, { useState } from 'react'
 import SelectDropdown from 'react-native-select-dropdown';
+import PrefHandler from '../../data/local/PrefHandler';
 
 export default function Settings({ navigation }) {
     const countries = ['עברית', 'English'];
+
+    const prefHandler = new PrefHandler()
+
+    // ----- Logout Function --------//
+    const LogoutFunc = () => {
+        prefHandler.deleteSession((onResult) => {
+            navigation.reset({
+                index: 0,
+                routes: [{ name: 'Signup' }],
+            })
+        })
+    }
+
+
+    const createTwoButtonAlert = () =>
+        Alert.alert(
+            "התנתק",
+            "האם אתה בטוח?",
+            [
+                {
+                    text: "לְבַטֵל",
+                    onPress: () => { },
+                    style: "cancel"
+                },
+                { text: "בסדר", onPress: () => LogoutFunc() }
+            ]
+        );
 
     return (
         <View style={{ flex: 1, backgroundColor: "#fff" }}>
@@ -14,8 +42,11 @@ export default function Settings({ navigation }) {
                 marginRight: 20
             }}>
                 <Text style={{ color: '#000', fontSize: 16, }}>שפת האפליקציה</Text>
-                <SelectDropdown
+                <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginLeft: 150, fontSize: 14, backgroundColor: '#F2F3F7', padding: 16, borderRadius: 5, marginTop: 10 }}>עברית</Text>
+
+                {/* <SelectDropdown
                     data={countries}
+                    
                     buttonStyle={{
                         width: 205,
                         borderRadius: 5,
@@ -34,16 +65,12 @@ export default function Settings({ navigation }) {
                         console.log(selectedItem, index);
                     }}
                     buttonTextAfterSelection={(selectedItem, index) => {
-                        // text represented after item is selected
-                        // if data array is an array of objects then return selectedItem.property to render after item is selected
                         return selectedItem;
                     }}
                     rowTextForSelection={(item, index) => {
-                        // text represented for each item in dropdown
-                        // if data array is an array of objects then return item.property to represent item in dropdown
                         return item;
                     }}
-                />
+                /> */}
             </View>
 
             <View style={{ marginTop: 33 }}>
@@ -69,7 +96,7 @@ export default function Settings({ navigation }) {
                 }}
             />
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => { createTwoButtonAlert() }}>
                 <Text style={{ marginRight: 20, color: '#000', fontFamily: "OpenSans-Medium", fontSize: 16, marginTop: 18 }}>התנתקות</Text>
             </TouchableOpacity>
 
