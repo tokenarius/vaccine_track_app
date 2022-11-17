@@ -187,12 +187,12 @@ export default function Signup({ navigation }) {
             <View style={{ marginTop: 34 }}>
                 <View style={{ marginTop: 13 }}>
                     <Input title={'שם'} onChange={(txt) => { setEmail(txt) + setEmailVal(false) }} bgStyle={emailVal ? { borderWidth: 1, borderColor: 'red' } : null} />
-                    {emailVal ? <Text style={{ color: '#FF4040', fontFamily: "OpenSans-Medium", fontSize: 12, marginRight: 20 }}>נא להזין אימייל</Text> : null}
+                    {emailVal ? <Text style={{ color: '#FF4040', fontFamily: "OpenSans-Medium", fontSize: 12, marginRight: 20 }}>נא להזין שם</Text> : null}
                 </View>
 
                 <View style={{ marginTop: 13 }}>
                     <Input title={'שם משפחה'} onChange={(txt) => { setName(txt) + setNameVal(false) }} bgStyle={nameVal ? { borderWidth: 1, borderColor: 'red' } : null} />
-                    {nameVal ? <Text style={{ color: '#FF4040', fontFamily: "OpenSans-Medium", fontSize: 12, marginRight: 20 }}>נא להזין שם</Text> : null}
+                    {nameVal ? <Text style={{ color: '#FF4040', fontFamily: "OpenSans-Medium", fontSize: 12, marginRight: 20 }}>נא להזין שם משפחה</Text> : null}
                 </View>
 
                 <View style={{ marginTop: 13 }}>

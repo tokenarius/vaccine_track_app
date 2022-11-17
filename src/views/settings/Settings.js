@@ -1,10 +1,12 @@
-import { View, Text, TouchableOpacity, StyleSheet,Alert } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native'
 import React, { useState } from 'react'
 import SelectDropdown from 'react-native-select-dropdown';
 import PrefHandler from '../../data/local/PrefHandler';
+import PrivacyPolicy from '../privacypolicy/PrivacyPolicy'
 
 export default function Settings({ navigation }) {
     const countries = ['עברית', 'English'];
+    const [privacyScreen, setPrivacyScreen] = useState(false)
 
     const prefHandler = new PrefHandler()
 
@@ -35,6 +37,8 @@ export default function Settings({ navigation }) {
 
     return (
         <View style={{ flex: 1, backgroundColor: "#fff" }}>
+
+            {privacyScreen && <PrivacyPolicy onPress={() => { setPrivacyScreen(false) }} />}
             <Text style={{ textAlign: 'center', color: '#000', fontFamily: "OpenSans-Bold", fontSize: 18, marginTop: 20 }}>תפריט</Text>
 
             <View style={{
@@ -110,7 +114,9 @@ export default function Settings({ navigation }) {
                 }}
             />
             <Text style={{ textAlign: 'center', color: '#000', fontFamily: "OpenSans-Medium", fontSize: 16, marginTop: 18 }}>גרסא 0.1</Text>
-            <Text style={{ textAlign: 'center', color: '#000', fontFamily: "OpenSans-Bold", fontSize: 16, marginTop: 18, marginBottom: 30 }}>תנאי השימוש</Text>
+            <TouchableOpacity onPress={()=>setPrivacyScreen(true)}>
+                <Text style={{ textAlign: 'center', color: '#000', fontFamily: "OpenSans-Bold", fontSize: 16, marginTop: 18, marginBottom: 30 }}>תנאי השימוש</Text>
+            </TouchableOpacity>
         </View>
     )
 }

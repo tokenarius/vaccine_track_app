@@ -7,21 +7,23 @@ export default function Splash({ navigation }) {
 
     useEffect(() => {
         prefHandler.getSession((res) => {
-
-            setTimeout(() => {
-                {
-                    res.userInfo ?
-                        navigation.reset({
-                            index: 0,
-                            routes: [{ name: 'BottomNavigator' }],
-                        })
-                        :
-                        navigation.reset({
-                            index: 0,
-                            routes: [{ name: 'Signup' }],
-                        })
-                }
-            }, 3000);
+            prefHandler.getoneShowOnly((check) => {
+                console.log(check)
+                setTimeout(() => {
+                    {
+                        res.userInfo ?
+                            navigation.reset({
+                                index: 0,
+                                routes: [{ name: 'BottomNavigator' }],
+                            })
+                            :
+                            navigation.reset({
+                                index: 0,
+                                routes: [{ name: check.oneTime ? 'Signup' :'Onboarding'  }],
+                            })
+                    }
+                }, 3000);
+            })
         })
     });
     return (

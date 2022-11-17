@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet, FlatList ,Image} from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, FlatList, Image } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import PrefHandler from '../../data/local/PrefHandler'
@@ -122,7 +122,7 @@ export default function Home({ navigation }) {
                     <View style={{ backgroundColor: item.color, padding: 10, borderRadius: 45 }} />
                 </View>
 
-                <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', marginLeft: 20, marginRight: 47 }}>
+                <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', marginLeft: 16, marginRight: 43 }}>
 
                     <TouchableOpacity style={{ backgroundColor: '#F2F3F7', width: 94, padding: 15, borderRadius: 5 }} onPress={() => {
                         StoreDose(item, "dose1", !item?.dose1)
@@ -189,16 +189,19 @@ export default function Home({ navigation }) {
 
                     <View style={{}}>
                         <TouchableOpacity activeOpacity={.3} style={{ flexDirection: 'row', alignItems: 'center', }} onPress={() => setNote(true) + setSelectedIndex(index) + setNoteCheck(true)}>
-                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 6, fontSize: 14, }}>הוספת הערה</Text>
                             {(item.note == "" && selectedIndex != index) &&
-                                // <AntDesign name={'plus'} size={14} color={'#000'} style={{ marginRight: 6 }} />
-                                <Image source={require('../../assets/logos/Plus.png')} style={{height:13,width:13}}/>
-                                }
+                                <View style={{flexDirection:'row',alignItems:'center'}}>
+                                    <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 6, fontSize: 14, }}>הוספת הערה</Text>
+                                    <Image source={require('../../assets/logos/Plus.png')} style={{ height: 13, width: 13 }} />
+                                </View>
+                            }
 
                             {((item.note != "" && selectedIndex != index) || (note && index == selectedIndex)) &&
-                                // <AntDesign name={'edit'} size={14} color={'#000'} style={{ marginRight: 6 }} />
-                                <Image source={require('../../assets/logos/Edit.png')} style={{height:15,width:15}}/>
-                                }
+                                <View style={{flexDirection:'row',alignItems:'center'}}>
+                                    <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 6, fontSize: 14, }}>עריכת הערה</Text>
+                                    <Image source={require('../../assets/logos/Edit.png')} style={{ height: 15, width: 15 }} />
+                                </View>
+                            }
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -250,7 +253,7 @@ export default function Home({ navigation }) {
             <View style={{ marginTop: 28 }}>
                 <TouchableOpacity activeOpacity={.3} style={{ flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-end' }} onPress={() => setColorsShow(!colorsShow)}>
                     <AntDesign name={colorsShow ? 'caretup' : 'caretdown'} size={14} color={'#000'} style={{ marginRight: 6 }} />
-                    <Text style={{ color: '#000', fontFamily: "OpenSans-Bold", marginRight: 20, fontSize: 14, }}>פנקס החיסונים</Text>
+                    <Text style={{ color: '#000', fontFamily: "OpenSans-Bold", marginRight: 20, fontSize: 14, }}>מקרא צבעים</Text>
                 </TouchableOpacity>
             </View>
 
