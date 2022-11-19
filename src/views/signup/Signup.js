@@ -88,7 +88,7 @@ export default function Signup({ navigation }) {
             title: 'דלקת ריאות פנאומוקוקלית וסיבוכיה',
             color: '#376BA5',
             decs1: 'המצאות ממושכת וקרובה בסביבת אנשים הנושאים את החיידק בגרונם.',
-            decs2: 'למדוכאי חיסון או מעל גיל 65 - 2 סוגי חיסון,.PPSV23 וחודשיים לאחר מכן PCV13',
+            decs2: 'למדוכאי חיסון או מעל גיל 65 - 2 סוגי חיסון,{"\n"}.PPSV23 וחודשיים לאחר מכן PCV13',
             decs3: 'פעיל ל5 שנים לפחות - PPSV23 PCV13 - חיסון אחד לכל החיים',
             decs4: 'מתחת לגיל 65 מיועד לקבוצות סיכון מיוחדות בלבד - יש להיוועץ ברופא המטפל.',
             note: '',
@@ -124,7 +124,7 @@ export default function Signup({ navigation }) {
         },
         {
             id: 8,
-            title: 'דלקת קרום המח מנינגוקוקלית ACWY',
+            title: 'HPV פפילומה',
             color: '#009E69',
             decs1: 'מגע עורי, בעיקר במגע מיני. קונדום אינו מספק הגנה מלאה מפני הדבקה.',
             decs2: '3 מנות על פני חצי שנה.',
@@ -153,7 +153,7 @@ export default function Signup({ navigation }) {
         //     setHivVal(true)
         //     return;
         // }
-         if (privacyCheck == false) {
+        if (privacyCheck == false) {
             setPrivacypolicyVal(true)
             return;
         }

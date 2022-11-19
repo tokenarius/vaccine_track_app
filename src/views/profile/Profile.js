@@ -47,26 +47,26 @@ export default function Profile({ navigation }) {
 
             <View style={{ marginTop: 34 }}>
                 <View style={{ marginTop: 13 }}>
-                    <Input title={'שם'} val={email} />
+                    <Input edit={false} title={'שם'} val={email} />
                 </View>
 
                 <View style={{ marginTop: 13 }}>
-                    <Input title={'שם משפחה'} val={name} />
+                    <Input edit={false} title={'שם משפחה'} val={name} />
                 </View>
 
                 <View style={{ marginTop: 13 }}>
                     <Input bgStyle={{
                         width: 85,
                         alignSelf: 'flex-end'
-                    }} title={'גיל'} val={age} />
+                    }}  edit={false} title={'גיל'} val={age} />
                 </View>
             </View>
 
             <View style={{ alignSelf: 'flex-end', marginRight: 20, marginTop: 34, flexDirection: 'row', alignItems: 'center' }}>
                 <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", fontSize: 16, marginRight: 10 }}>אני חי עם HIV</Text>
-                <TouchableOpacity onPress={() => setHivCheck(!hivCheck)} style={{}}>
+                {/* <TouchableOpacity onPress={() => setHivCheck(!hivCheck)} style={{}}> */}
                     <MaterialCommunityIcons name={hivCheck ? 'checkbox-marked-outline' : 'checkbox-blank-outline'} style={{}} size={32} color={'#000'} />
-                </TouchableOpacity>
+                {/* </TouchableOpacity> */}
             </View>
         </View>
     )

@@ -118,7 +118,7 @@ export default function Home({ navigation }) {
         return (
             <View style={{ marginTop: 20 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-end', marginRight: 20, }}>
-                    <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 5, fontSize: 14, backgroundColor: '#F2F3F7', flex: 1, marginHorizontal: 20, padding: 15, borderRadius: 5 }}>{item.title}</Text>
+                    <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 5, fontSize: 14, backgroundColor: '#F2F3F7', flex: 1, marginHorizontal: 20, padding: 15, borderRadius: 5,textAlign:'right' }}>{item.title}</Text>
                     <View style={{ backgroundColor: item.color, padding: 10, borderRadius: 45 }} />
                 </View>
 
