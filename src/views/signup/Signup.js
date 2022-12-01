@@ -40,6 +40,9 @@ export default function Signup({ navigation }) {
             decs3: 'פעיל למשך שנה ויש לחדש כל שנה.',
             decs4: 'הזנים המבוססים על החיסון משתנים כל שנה.',
             note: '',
+            dosebox1: true,
+            dosebox2: true,
+            dosebox3: false,
             dose1: false,
             dose2: false,
             dose3: false
@@ -53,6 +56,9 @@ export default function Signup({ navigation }) {
             decs3: 'ילידי 57-69 אינם מחוסנים בשגרה, ילידי 70-77 מחוסנים בחיסון אחד בלבד. ילידי 78 והלאה מחוסנים בחיסון מלא על פי תוכנית החיסונים.',
             decs4: 'מומלץ בעיקר לנוסעים לחו״ל ובכל מקרה להיוועץ ברופא המשפחה.',
             note: '',
+            dosebox1: true,
+            dosebox2: true,
+            dosebox3: true,
             dose1: false,
             dose2: false,
             dose3: false
@@ -66,6 +72,9 @@ export default function Signup({ navigation }) {
             decs3: 'פעיל לפחות 20 שנה. ילידי שנת 1992 והלאה חוסנו כחלק מחיסוני הילדות. ניתן לבדוק נוגדנים בבדיקת דם בקופת החולים.',
             decs4: 'רלוונטי מאוד לאנשים הנוטלים PREP. יש לוודא חיסוניות לפני התחלת הטיפול.',
             note: '',
+            dosebox1: true,
+            dosebox2: true,
+            dosebox3: true,
             dose1: false,
             dose2: false,
             dose3: false
@@ -74,11 +83,14 @@ export default function Signup({ navigation }) {
             id: 4,
             title: 'צהבת A',
             color: '#EBA9C1',
-            decs1: 'רימינג , אוכל ומים הנגועים בוירוס.',
+            decs1: 'רימינג, אוכל ומים הנגועים בוירוס.',
             decs2: '2 מנות בהפרש של חצי שנה לפחות.',
             decs3: 'פעיל לפחות 30 שנה. ילידי שנת 1998 והלאה חוסנו כחלק מחיסוני הילדות. ניתן לבדוק בדיקת נוגדים בקופות החולים.',
             decs4: 'שכיחות התפרצויות סביב אירועי גאווה.',
             note: '',
+            dosebox1: true,
+            dosebox2: true,
+            dosebox3: false,
             dose1: false,
             dose2: false,
             dose3: false
@@ -88,10 +100,13 @@ export default function Signup({ navigation }) {
             title: 'דלקת ריאות פנאומוקוקלית וסיבוכיה',
             color: '#376BA5',
             decs1: 'המצאות ממושכת וקרובה בסביבת אנשים הנושאים את החיידק בגרונם.',
-            decs2: 'למדוכאי חיסון או מעל גיל 65 - 2 סוגי חיסון,{"\n"}.PPSV23 וחודשיים לאחר מכן PCV13',
-            decs3: 'פעיל ל5 שנים לפחות - PPSV23 PCV13 - חיסון אחד לכל החיים',
+            decs2: 'למדוכאי חיסון או מעל גיל 65 - 2 סוגי חיסון,\n.PPSV23 וחודשיים לאחר מכן PCV13',
+            decs3: 'פעיל ל5 שנים לפחות - PPSV23\nPCV13 - חיסון אחד לכל החיים',
             decs4: 'מתחת לגיל 65 מיועד לקבוצות סיכון מיוחדות בלבד - יש להיוועץ ברופא המטפל.',
             note: '',
+            dosebox1: true,
+            dosebox2: true,
+            dosebox3: false,
             dose1: false,
             dose2: false,
             dose3: false
@@ -105,6 +120,9 @@ export default function Signup({ navigation }) {
             decs3: 'פעיל ל-5 שנים.',
             decs4: 'הזן הנפוץ ביותר בישראל וברוב מדינות המערב. מחלה עם אחוזי תמותה גבוהים. עלולות להיות  התפרצויות בעיקר באנשים השוהים במקומות סגורים (מסיבות וכ׳ו).',
             note: '',
+            dosebox1: true,
+            dosebox2: true,
+            dosebox3: false,
             dose1: false,
             dose2: false,
             dose3: false
@@ -118,6 +136,9 @@ export default function Signup({ navigation }) {
             decs3: 'פעיל ל-5 שנים. חלק משגרת החיסונים לחיילים מתגייסים.',
             decs4: 'מחלה נדירה אך מאוד מסוכנת.',
             note: '',
+            dosebox1: true,
+            dosebox2: true,
+            dosebox3: false,
             dose1: false,
             dose2: false,
             dose3: false
@@ -131,6 +152,9 @@ export default function Signup({ navigation }) {
             decs3: 'ניתן כסדרה אחת פעם אחת בחיים. כיום ניתן לכל הבנים והבנות בכיתה ח׳.',
             decs4: 'החיסון מיועד למניעת יבלות באברי המין וכן סרטן פי הטבעת, סרטן הפין וסרטן הפה והלוע. ככל  שמבוצע מוקדם יותר כך יעילותו גוברת (הסיכוי לחשיפה קודמת נמוך יותר).',
             note: '',
+            dosebox1: false,
+            dosebox2: false,
+            dosebox3: false,
             dose1: false,
             dose2: false,
             dose3: false
@@ -139,23 +163,26 @@ export default function Signup({ navigation }) {
 
     // Register User to Local ///
     const HandleLocal = () => {
+        let valid = true;
         if (email == '') {
             setEmailVal(true)
-            return;
-        } if (name == '') {
-            setNameVal(true)
-            return;
-        } if (age == '') {
-            setAgeVal(true)
-            return;
+            valid = false
         }
-        //  if (hivCheck == false) {
-        //     setHivVal(true)
-        //     return;
-        // }
+        if (name == '') {
+            setNameVal(true)
+            valid = false
+        }
+        if (age == '') {
+            setAgeVal(true)
+            valid = false
+        }
         if (privacyCheck == false) {
             setPrivacypolicyVal(true)
-            return;
+            valid = false
+        }
+
+        if (email == '' || name == '' || age == '' || privacyCheck == '') {
+            valid = false
         }
 
         const body = ({
@@ -166,16 +193,18 @@ export default function Signup({ navigation }) {
             data: DATA,
         });
 
-        prefHandle.createSession(body,
-            (onSucess) => {
-                console.log(onSucess)
-                navigation.navigate('BottomNavigator')
-            },
-            (error) => {
-                console.log(error)
-                helper.showToast(error, 'red')
-            }
-        )
+        if (valid == true) {
+            prefHandle.createSession(body,
+                (onSucess) => {
+                    console.log(onSucess)
+                    navigation.navigate('BottomNavigator')
+                },
+                (error) => {
+                    console.log(error)
+                    helper.showToast(error, 'red')
+                }
+            )
+        }
     }
 
     return (

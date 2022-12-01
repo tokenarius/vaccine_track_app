@@ -118,47 +118,67 @@ export default function Home({ navigation }) {
         return (
             <View style={{ marginTop: 20 }}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', alignSelf: 'flex-end', marginRight: 20, }}>
-                    <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 5, fontSize: 14, backgroundColor: '#F2F3F7', flex: 1, marginHorizontal: 20, padding: 15, borderRadius: 5,textAlign:'right' }}>{item.title}</Text>
+                    <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 5, fontSize: 14, backgroundColor: '#F2F3F7', flex: 1, marginHorizontal: 20, padding: 15, borderRadius: 5, textAlign: 'right' }}>{item.title}</Text>
                     <View style={{ backgroundColor: item.color, padding: 10, borderRadius: 45 }} />
                 </View>
 
-                <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-around', marginLeft: 16, marginRight: 43 }}>
 
-                    <TouchableOpacity style={{ backgroundColor: '#F2F3F7', width: 94, padding: 15, borderRadius: 5 }} onPress={() => {
-                        StoreDose(item, "dose1", !item?.dose1)
-                    }}>
-                        {item?.dose1 ?
-                            <AntDesign name={'checkcircleo'} size={18} color={'#000'} style={{ alignSelf: 'center' }} />
-                            :
-                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 5, fontSize: 14, textAlign: 'center' }}>מנה 3</Text>}
-                    </TouchableOpacity>
+                <View style={{ marginTop: 10, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', marginLeft: 16, marginRight: 43 }}>
 
-                    <TouchableOpacity style={{ backgroundColor: '#F2F3F7', width: 94, padding: 15, borderRadius: 5 }} onPress={() => { StoreDose(item, "dose2", !item?.dose2) }}>
-                        {item?.dose2 ?
-                            <AntDesign name={'checkcircleo'} size={18} color={'#000'} style={{ alignSelf: 'center' }} />
-                            :
-                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 5, fontSize: 14, textAlign: 'center' }}>מנה 2</Text>}
-                    </TouchableOpacity>
+                    {item.dosebox3 == true ?
+                        < TouchableOpacity style={{ backgroundColor: '#F2F3F7', width: 92, padding: 15, borderRadius: 5, marginRight: 10 }} onPress={() => {
+                            StoreDose(item, "dose1", !item?.dose1)
+                        }}>
+                            {item?.dose1 ?
+                                <AntDesign name={'checkcircleo'} size={18} color={'#000'} style={{ alignSelf: 'center' }} />
+                                :
+                                <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 5, fontSize: 14, textAlign: 'center' }}>מנה 3</Text>}
+                        </TouchableOpacity>
+                        : null
+                    }
 
-                    <TouchableOpacity style={{ backgroundColor: '#F2F3F7', width: 94, padding: 15, borderRadius: 5 }} onPress={() => { StoreDose(item, "dose3", !item?.dose3) }}>
-                        {item?.dose3 ?
-                            <AntDesign name={'checkcircleo'} size={18} color={'#000'} style={{ alignSelf: 'center' }} />
-                            :
-                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 5, fontSize: 14, textAlign: 'center' }}>מנה 1</Text>}
-                    </TouchableOpacity>
+                    {item.dosebox2 == true ?
+                        <TouchableOpacity style={{ backgroundColor: '#F2F3F7', width: 92, padding: 15, borderRadius: 5, marginRight: 10 }} onPress={() => { StoreDose(item, "dose2", !item?.dose2) }}>
+                            {item?.dose2 ?
+                                <AntDesign name={'checkcircleo'} size={18} color={'#000'} style={{ alignSelf: 'center' }} />
+                                :
+                                <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 5, fontSize: 14, textAlign: 'center' }}>מנה 2</Text>}
+                        </TouchableOpacity>
+                        : null}
+
+                    {item.dosebox1 == true ?
+                        <TouchableOpacity style={{ backgroundColor: '#F2F3F7', width: 92, padding: 15, borderRadius: 5 }} onPress={() => { StoreDose(item, "dose3", !item?.dose3) }}>
+                            {item?.dose3 ?
+                                <AntDesign name={'checkcircleo'} size={18} color={'#000'} style={{ alignSelf: 'center' }} />
+                                :
+                                <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 5, fontSize: 14, textAlign: 'center' }}>מנה 1</Text>}
+                        </TouchableOpacity>
+                        : null}
                 </View>
 
-                {(item.note != "" && selectedIndex != index) &&
-                    <Input bgStyle={{ marginRight: 30 }} multiline={true} edit={noteCheck} val={item.note} onChange={(txt) => { }} />}
+                {
+                    (item.note != "" && selectedIndex != index) &&
+                    <Input bgStyle={{ marginRight: 30 }} multiline={true} edit={noteCheck} val={item.note} onChange={(txt) => { }} />
+                }
                 {
                     note && index == selectedIndex ?
                         <View>
-                            <Input bgStyle={{ marginRight: 30 }} multiline={true} edit={noteCheck} val={(inputValue != "" && inputValueIndex == index) ? inputValue : item.note} onChange={(txt) => {
-                                setinputValue(txt)
-                                setinputValueIndex(index)
-                            }} />
+                            <Input bgStyle={{ marginRight: 28 }} multiline={true} edit={noteCheck}
+                                val={(inputValue != "" && inputValueIndex == index) ? inputValue : item.note}
+                                onEndEditing={() => {
+                                    if (inputValue == false) {
+                                        setNote(false)
+                                        setNoteCheck(false)
+                                        setSelectedIndex(index)
+                                    }
+                                }}
+                                onChange={(txt) => {
+                                    setinputValue(txt)
+                                    setinputValueIndex(index)
+                                }} />
                             {noteCheck ?
                                 <TouchableOpacity style={{ marginTop: 5, padding: 5 }} onPress={() => {
+
                                     setNoteCheck(false)
                                     if (inputValue != "") {
                                         StoreNote(item)
@@ -178,27 +198,35 @@ export default function Home({ navigation }) {
                         <TouchableOpacity activeOpacity={.3} style={{ flexDirection: 'row', alignItems: 'center', }} onPress={() => {
                             if (selectedOpenBox == index) {
                                 setselectedOpenBox(-1)
+                                setSelectedIndex(-1)
+                                setVaccineDetails(false)
                             } else {
                                 setselectedOpenBox(index)
+                                setSelectedIndex(index)
+                                setVaccineDetails(true)
                             }
                         }}>
-                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 6, fontSize: 14, }}>למידע נוסף</Text>
-                            <AntDesign name={vaccineDetails && index == selectedIndex ? 'up' : 'down'} size={14} color={'#000'} style={{ marginRight: 6 }} />
+                            <Text style={{ color: '#000', fontFamily: "OpenSans-Bold", marginRight: 6, fontSize: 14, }}>למידע נוסף</Text>
+                            {vaccineDetails && index == selectedIndex ?
+                                <Image source={require('../../assets/logos/up.png')} resizeMode="center" style={{ height: 13, width: 13 }} />
+                                :
+                                <Image source={require('../../assets/logos/down.png')} resizeMode="center" style={{ height: 13, width: 13 }} />
+                            }
                         </TouchableOpacity>
                     </View>
 
                     <View style={{}}>
                         <TouchableOpacity activeOpacity={.3} style={{ flexDirection: 'row', alignItems: 'center', }} onPress={() => setNote(true) + setSelectedIndex(index) + setNoteCheck(true)}>
                             {(item.note == "" && selectedIndex != index) &&
-                                <View style={{flexDirection:'row',alignItems:'center'}}>
-                                    <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 6, fontSize: 14, }}>הוספת הערה</Text>
+                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                    <Text style={{ color: '#000', fontFamily: "OpenSans-Bold", marginRight: 6, fontSize: 14, }}>הוספת הערה</Text>
                                     <Image source={require('../../assets/logos/Plus.png')} style={{ height: 13, width: 13 }} />
                                 </View>
                             }
 
                             {((item.note != "" && selectedIndex != index) || (note && index == selectedIndex)) &&
-                                <View style={{flexDirection:'row',alignItems:'center'}}>
-                                    <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 6, fontSize: 14, }}>עריכת הערה</Text>
+                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                    <Text style={{ color: '#000', fontFamily: "OpenSans-Bold", marginRight: 6, fontSize: 14, }}>עריכת הערה</Text>
                                     <Image source={require('../../assets/logos/Edit.png')} style={{ height: 15, width: 15 }} />
                                 </View>
                             }
@@ -211,22 +239,22 @@ export default function Home({ navigation }) {
                     <View style={{ marginLeft: 20, marginRight: 47, paddingBottom: 20, backgroundColor: '#F2F3F7', borderRadius: 5, marginTop: 15 }}>
                         <View style={{ marginTop: 20, marginRight: 20 }}>
                             <Text style={{ color: '#000', fontFamily: "OpenSans-Bold", marginRight: 6, fontSize: 14, }}>דרכי הדבקה רלוונטיות</Text>
-                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 6, fontSize: 14, marginLeft: 20 }}>{item.decs1}</Text>
+                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 6, fontSize: 14, marginLeft: 20, textAlign: 'right' }}>{item.decs1}</Text>
                         </View>
 
                         <View style={{ marginTop: 20, marginRight: 20 }}>
                             <Text style={{ color: '#000', fontFamily: "OpenSans-Bold", marginRight: 6, fontSize: 14, }}>איך נעשה החיסון</Text>
-                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 6, fontSize: 14, marginLeft: 20 }}>{item.decs2}</Text>
+                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 6, fontSize: 14, marginLeft: 20, textAlign: 'right' }}>{item.decs2}</Text>
                         </View>
 
                         <View style={{ marginTop: 20, marginRight: 20 }}>
                             <Text style={{ color: '#000', fontFamily: "OpenSans-Bold", marginRight: 6, fontSize: 14, }}>לכמה זמן הוא פעיל ומי מחוסן</Text>
-                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 6, fontSize: 14, marginLeft: 20 }}>{item.decs3}</Text>
+                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 6, fontSize: 14, marginLeft: 20, textAlign: 'right' }}>{item.decs3}</Text>
                         </View>
 
                         <View style={{ marginTop: 20, marginRight: 20 }}>
                             <Text style={{ color: '#000', fontFamily: "OpenSans-Bold", marginRight: 6, fontSize: 14, }}>מידע חשוב</Text>
-                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 6, fontSize: 14, marginLeft: 20 }}>{item.decs4}</Text>
+                            <Text style={{ color: '#000', fontFamily: "OpenSans-Medium", marginRight: 6, fontSize: 14, marginLeft: 20, textAlign: 'right' }}>{item.decs4}</Text>
                         </View>
                     </View>
                 }
@@ -239,7 +267,7 @@ export default function Home({ navigation }) {
                         marginTop: 20,
                     }}
                 />
-            </View>
+            </View >
         )
     }
 

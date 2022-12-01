@@ -114,7 +114,7 @@ export default function Settings({ navigation }) {
                 }}
             />
             <Text style={{ textAlign: 'center', color: '#000', fontFamily: "OpenSans-Medium", fontSize: 16, marginTop: 18 }}>גרסא 0.1</Text>
-            <TouchableOpacity onPress={()=>setPrivacyScreen(true)}>
+            <TouchableOpacity onPress={() => setPrivacyScreen(true)}>
                 <Text style={{ textAlign: 'center', color: '#000', fontFamily: "OpenSans-Bold", fontSize: 16, marginTop: 18, marginBottom: 30 }}>תנאי השימוש</Text>
             </TouchableOpacity>
         </View>

@@ -22,6 +22,7 @@ export default function BottomNavigator() {
                 },
                 tabBarStyle: {
                     backgroundColor: '#ffffff', height: 70,
+                    paddingHorizontal:50
                 }
             }}  >
             <Tab.Screen
@@ -51,7 +52,7 @@ export default function BottomNavigator() {
                             <Entypo name={'menu'} size={35} color={color}
                             />
                         );
-                    },
+                    }
                 }}
             />
         </Tab.Navigator>
